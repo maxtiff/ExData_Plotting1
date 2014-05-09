@@ -12,18 +12,29 @@ if(!file.exists("data")) {
 ####  Function that downloads file from specified url and unzips into a destination directory.
 ####  Function will not run if a directory exists.
 
-download <- function(url, dataDirPath, dataSetDirPath, zipFileName,) {
+download <- function(url, dataFileName, zipFileName) {
+
+  #   url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+  #   dataFileName <- "household_power_consumption.txt"
+  #   zipFilename <- "household_power_consumption.zip"
   
-  ## Check if dir for data exists. Create dir if not.
-  if (!file.exists("data.zip")) {
-    dir.create("data")
-    
-    ## Download file
-    fileUrl <- url
-    download.file(fileUrl,destination)
-    
-    ## Unzip file
-    unzip(destination, exdir="./data")
+  ## Establish destinations for zip and data files.
+  dataDirPath <- "data"
+  datasetDirPath <- file.path(dataDirPath, dataFileName)
+  zipPath <- file.path(dataDirPath, zipFilename)
+  
+  
+  ## Downloading/Unzipping data
+  if(!file.exists(dataDirPath)){ 
+    dir.create(dataDirPath) 
+  }
+  
+  if(!file.exists(zipPath)){ 
+    download.file(Url, zipPath, mode="wb")
+  }
+  
+  if(!file.exists(datasetDirPath)) { 
+    unzip(zipPath, exdir=dataDirPath)
   }
   
 }

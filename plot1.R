@@ -1,4 +1,4 @@
 library(data.table)
-source("./getdata/download.R")
+source("download.R")
 
 download()
