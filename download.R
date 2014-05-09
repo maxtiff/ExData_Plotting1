@@ -12,7 +12,7 @@ download <- function(url, dataFileName, zipFileName) {
   datasetDirPath <- file.path(dataDirPath, dataFileName)
   zipPath <- file.path(dataDirPath, zipFileName)
   
-  ## Downloading/Unzipping data iff data doesn't already exist
+  ## Downloading/Unzipping data *iff* data doesn't already exist
   if(!file.exists(dataDirPath)){ 
     dir.create(dataDirPath) 
   }
@@ -25,7 +25,7 @@ download <- function(url, dataFileName, zipFileName) {
   if(!file.exists(datasetDirPath)) { 
     unzip(zipPath, exdir=dataDirPath)
   }
-  
+
 }
 
 

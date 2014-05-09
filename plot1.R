@@ -1,6 +1,6 @@
 library(data.table)
-source("download.R")
 setwd("~/ExData_Plotting1")
+source("download.R")
 
 
 ## Assign values to variables that are used for arguments in the download function.
@@ -9,9 +9,9 @@ dataFileName <- "household_power_consumption.txt"
 zipFileName <- "household_power_consumption.zip"
 
 ## Download function takes url of desired file, desired file name, and name of zip file.
-file <- download(url, dataFileName, zipFileName)
+download(url, dataFileName, zipFileName)
 
 ## Read in file, but only read in observations from 2007-02-01 through 2007-02-02.
-data <- fread(file)
+completeData <- fread("./data/household_power_consumption.txt", na.strings=c("?"))
 
-head(data)
+
