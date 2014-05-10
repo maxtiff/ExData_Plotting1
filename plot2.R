@@ -17,4 +17,9 @@ file <- download(url, dataFileName, zipFileName)
 ##  Create data table from downloaded file
 data <- createTable(file)
 
+##  Create DateTime column
+data$DateTime <- ts(paste(data$Date, data$Time))
+data$DateTime <- strptime(data$DateTime,format="%Y-%m-%d %H: %M: %S")
+
 ##  Plot
+with(data, plot(DateTime, Global_active_power, type="l", ylab="Global Active Power (Kilowatts)", xlab=""))
