@@ -17,15 +17,18 @@ download <- function(url, dataFileName, zipFileName) {
     dir.create(dataDirPath) 
   }
   
-  ## 
+  ## Validate if compressed file already exists.
   if(!file.exists(zipPath)){ 
     download.file(url, zipPath, mode="wb")
   }
   
+  ## Validate if decompressed file exists in dir.
   if(!file.exists(datasetDirPath)) { 
     unzip(zipPath, exdir=dataDirPath)
   }
-
+  
+  return(dataDirPath)
+  
 }
 
 
