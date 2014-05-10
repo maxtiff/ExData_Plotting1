@@ -27,7 +27,7 @@ download <- function(url, dataFileName, zipFileName) {
     unzip(zipPath, exdir=dataDirPath)
   }
   
-  return(dataDirPath)
+  return(datasetDirPath)
   
 }
 
