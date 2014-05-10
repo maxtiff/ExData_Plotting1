@@ -16,9 +16,3 @@ file <- download(url, dataFileName, zipFileName)
 
 ##  Create data table from downloaded file
 data <- createTable(file)
-
-##  Plot histogram
-hist(data$Global_active_power,main = "Global Active Power",col="red",xlab="Global Active Power (Kilowatts)")
-
-
-

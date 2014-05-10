@@ -31,14 +31,14 @@ download <- function(url, dataFileName, zipFileName) {
   
 }
 
-
-# fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
-# temp <- tempfile()
-# 
-# if(!file.exists("data")) {
-#   dir.create("data")
-#   
-#   download.file(fileUrl, destfile = temp)
-#   data <- read.table(unz(temp, "household_power_consumption.txt"))
-#   unlink(temp)
-# }
+createTable <- function(file) {
+  ##  Read in file, but only rows from 2007-02-01 through 2007-02-02.
+  data <- read.table(file, skip = 66637, nrow = 2880, sep = ";", col.names = colnames(read.table(file, nrow = 1, header = TRUE, sep=";")))
+  data <- na.omit(data)
+  
+  ##  Convert date format to YYYY-MM-DD.
+  data$Date <- as.Date(strptime(data$Date,format="%d/%m/%Y"))
+  
+  ##  Return modified data set.
+  return(data)
+}
