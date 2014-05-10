@@ -1,4 +1,5 @@
-####  Function downloads file from specified url and unzips the downloaded file into a destination directory.
+####  download() function downloads file from specified url and unzips the downloaded file into a destination directory.
+####  Returns a location of the data file to be processed by the createTable() function.
 ####  Function will not run if a directory of data previously exists.
 
 download <- function(url, dataFileName, zipFileName) {
@@ -31,6 +32,8 @@ download <- function(url, dataFileName, zipFileName) {
   
 }
 
+
+####  Function creates and returns a data table that includes observations from 2007-02-01 through 2007-02-02.
 createTable <- function(file) {
   ##  Read in file, but only rows from 2007-02-01 through 2007-02-02.
   data <- read.table(file, skip = 66637, nrow = 2880, sep = ";", col.names = colnames(read.table(file, nrow = 1, header = TRUE, sep=";")))

@@ -16,5 +16,3 @@ file <- download(url, dataFileName, zipFileName)
 
 ##  Create data table from downloaded file
 data <- createTable(file)
-
-##  Plot
