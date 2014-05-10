@@ -18,6 +18,7 @@ data <- na.omit(data)
 ##  Convert date format to YYYY-MM-DD.
 data$Date <- as.Date(strptime(data$Date,format="%d/%m/%Y"))
 
+hist(data$Global_active_power,main = "Global Active Power",col="red",xlab="Global Active Power (Kilowatts)")
 
 
 
