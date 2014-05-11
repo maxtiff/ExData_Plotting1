@@ -33,7 +33,7 @@ download <- function(url, dataFileName, zipFileName) {
 }
 
 
-####  Function creates and returns a data table that includes observations from 2007-02-01 through 2007-02-02.
+####  Function creates and returns a data table that includes household electricity consumption observations from 2007-02-01 through 2007-02-02.
 createTable <- function(file) {
   ##  Read in file, but only rows from 2007-02-01 through 2007-02-02.
   data <- read.table(file, skip = 66637, nrow = 2880, sep = ";", col.names = colnames(read.table(file, nrow = 1, header = TRUE, sep=";")))
@@ -41,6 +41,10 @@ createTable <- function(file) {
   
   ##  Convert date format to YYYY-MM-DD.
   data$Date <- as.Date(strptime(data$Date,format="%d/%m/%Y"))
+  
+  ##  Create DateTime column
+  data$DateTime <- ts(paste(data$Date, data$Time))
+  data$DateTime <- strptime(data$DateTime,format="%Y-%m-%d %H: %M: %S")
   
   ##  Return modified data set.
   return(data)

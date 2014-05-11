@@ -17,9 +17,7 @@ file <- download(url, dataFileName, zipFileName)
 ##  Create data table from downloaded file
 data <- createTable(file)
 
-##  Create DateTime column
-data$DateTime <- ts(paste(data$Date, data$Time))
-data$DateTime <- strptime(data$DateTime,format="%Y-%m-%d %H: %M: %S")
-
-##  Plot
+##  Plot and save line graph of Global Active Power (Kilowatts) usage over 2007-02-01 and 2007-02-02.
+png(filename="plot2.png", width=480, height=480)
 with(data, plot(DateTime, Global_active_power, type="l", ylab="Global Active Power (Kilowatts)", xlab=""))
+dev.off()
