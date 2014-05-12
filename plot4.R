@@ -27,7 +27,7 @@ with(data, {
     plot(DateTime, Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab="")
     lines(DateTime, Sub_metering_2, type = "l", col = "red")
     lines(DateTime, Sub_metering_3, type = "l", col = "blue")
-    legend("topright", border="white", bty="n",pch = "___", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+    legend("topright", border="white", bty="n",lty=c(1,1,1), lwd=c(2.5,2.5,2.5), col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
     plot(DateTime, Global_reactive_power, type = "S")
 })
 dev.off()
